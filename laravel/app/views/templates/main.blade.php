@@ -21,10 +21,10 @@
                     <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="{{URL::route('links.index')}}">Links</a>
+                    <a href="{{URL::route('linkList')}}">Links</a>
                 </li>
                 <li>
-                    <a href="{{URL::route('posts.index')}}">Posts</a>
+                    <a href="{{URL::route('postList')}}">Posts</a>
                 </li>
             </ul>
         </div>
