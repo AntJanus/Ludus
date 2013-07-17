@@ -17,7 +17,7 @@ class CreateLinks extends Migration {
 			$table->string('title');
 			$table->text('description');
 			$table->string('url');
-			$table->string('slug');
+			$table->string('slug')->unique();
 			$table->string('image_url')->nullable();
 			$table->integer('votes')->nullable();
 			$table->integer('clicks')->nullable();

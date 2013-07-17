@@ -7,24 +7,24 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/tseczka.css">
+    <link rel="stylesheet" href="/css/normalize.css">
+    <link rel="stylesheet" href="/css/tseczka.css">
 
     @yield('javascript')
 </head>
 <body>
     <div class="nav-container nav-main nav-right">
         <div class="nav">
-            <a href="#" class="nav-title emboss">Ludus</a>
+            <a href="/" class="nav-title emboss">Ludus</a>
             <ul >
                 <li>
-                    <a href="#">Home</a>
+                    <a href="/">Home</a>
                 </li>
                 <li>
-                    <a href="links">Links</a>
+                    <a href="{{URL::route('linkList')}}">Links</a>
                 </li>
                 <li>
-                    <a href="posts">Posts</a>
+                    <a href="{{URL::route('postList')}}">Posts</a>
                 </li>
             </ul>
         </div>
