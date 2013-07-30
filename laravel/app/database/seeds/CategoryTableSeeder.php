@@ -26,7 +26,7 @@ class CategoryTableSeeder extends Seeder {
 			$category = new Category;
 			$category->name = $cat;
 			$category->slug = Str::slug($cat);
-			$category->save();
+			$id = $category->save();
 
 			foreach ($subcats as $s) {
 				$subCategory = new Category;

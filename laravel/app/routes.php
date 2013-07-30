@@ -2,12 +2,16 @@
 
 /*
 |--------------------------------------------------------------------------
-| Application Routes
+| View Modifiers
 |--------------------------------------------------------------------------
 |
-| Here is where you can register all of the routes for an application.
-| It's a breeze. Simply tell Laravel the URIs it should respond to
-| and give it the Closure to execute when that URI is requested.
+*/
+View::composer('templates.main', 'basicComposer');
+
+/*
+|--------------------------------------------------------------------------
+| Application Routes
+|--------------------------------------------------------------------------
 |
 */
 
@@ -21,21 +25,21 @@ Route::get('links', array(
 	'as'   => 'linkList', 
 	'uses' => 'LinkController@linkList'));
 
-Route::get('links/{$id}', array(
+Route::get('links/{id}', array(
 	'as'   => 'linkById', 
 	'uses' => 'LinkController@linkById'))
 ->where('id', '[0-9]+');
 
-Route::get('links/{$category}/{$subcategory}/{$slug}', array(
+Route::get('links/{categorySlug}/{subcategorySlug}/{slug}', array(
 	'as'   => 'linkCanon', 
 	'uses' => 'LinkController@linkCanon'));
 
 //feeds
-Route::get('links/{$category}', array(
+Route::get('links/{categorySlug}', array(
 	'as'   => 'categoryFeed',
 	'uses' => 'FeedController@categoryFeed'));
 
-Route::get('links/{$category}/{$subcategory}', array(
+Route::get('links/{categorySlug}/{subcategorySlug}', array(
 	'as'   => 'subcategoryFeed',
 	'uses' => 'FeedController@subcategoryFeed'));
 
@@ -44,11 +48,11 @@ Route::get('posts', array(
 	'as'   => 'postList', 
 	'uses' => 'PostController@postList'));
 
-Route::get('posts/{$id}', array(
+Route::get('posts/{id}', array(
 	'as'   => 'postById', 
 	'uses' => 'PostController@postById'))
 ->where('id', '[0-9]+');
 
-Route::get('posts/{$category}/{$subcategory}/{$slug}', array(
+Route::get('posts/{categorySlug}/{subcategorySlug}/{slug}', array(
 	'as'   => 'postCanon', 
 	'uses' => 'PostController@postCanon'));

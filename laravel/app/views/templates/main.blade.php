@@ -29,6 +29,18 @@
             </ul>
         </div>
     </div>
+    <div class="nav-container nav-secondary">
+        <div class="nav">
+            <ul>
+            @foreach($mainCategories as $cat)
+                <li>
+                    <a href="/links/{{$cat->slug}}">{{$cat->name}}</a>
+                </li>
+            @endforeach
+            </ul>
+        </div>
+    </div>
+    @yield('header');
     <div class="container">
         <div class="row">
             <div class="col-9">
