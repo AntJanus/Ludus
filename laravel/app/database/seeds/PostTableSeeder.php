@@ -16,7 +16,8 @@ class PostTableSeeder extends Seeder {
 				'slug' => 'sample-post-title-'.$i,
 				'content' => 'Sample content will go here and will take up a certain amount of space. Let\'s discuss it!', 
 				'user_id' => 1,
-				'category_id' => 1
+				'category_id' => 1,
+				'subcategory_id' => 2
 				));
 
 			$link->save();

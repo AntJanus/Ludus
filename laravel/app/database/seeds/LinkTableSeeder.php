@@ -16,7 +16,8 @@ class LinkTableSeeder extends Seeder {
 				'url' => 'http://studfff'.$i.'.com',
 				'slug' => 'sample-link-title-'.$i,
 				'user_id' => 1,
-				'category_id' => 1
+				'category_id' => 1,
+				'subcategory_id' => 2
 				));
 
 			$link->save();

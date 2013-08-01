@@ -22,7 +22,6 @@ class CreateLinks extends Migration {
 			$table->integer('votes')->nullable();
 			$table->integer('clicks')->nullable();
 			$table->integer('user_id');
-			$table->integer('category_id');
 			$table->timestamps();
 		});
 	}
