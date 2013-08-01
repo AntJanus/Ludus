@@ -28,4 +28,7 @@ controluser_password=awesome" > /etc/phpmyadmin.facts;'
     puppet.module_path = "modules"
     puppet.options = ['--verbose']
   end
+
+  config.vm.provision :shell, :path => "./bin/bootstrap.sh"
+
 end
