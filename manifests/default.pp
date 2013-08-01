@@ -31,71 +31,36 @@ package { [
   ensure  => 'installed',
 }
 
-class { 'nginx': }
+class { 'apache': }
 
-
-nginx::resource::vhost { 'awesome.dev':
-  ensure       => present,
-  server_name  => [
-    'awesome.dev'  ],
-  listen_port  => 80,
-  index_files  => [
-    'index.html',
-    'index.htm',
-    'index.php'
-  ],
-  www_root     => '/var/www/',
-  try_files    => ['$uri', '$uri/', '/index.php?$args'],
+apache::dotconf { 'custom':
+  content => 'EnableSendfile Off',
 }
 
-$path_translated = 'PATH_TRANSLATED $document_root$fastcgi_path_info'
-$script_filename = 'SCRIPT_FILENAME $document_root$fastcgi_script_name'
+apache::module { 'rewrite': }
 
-nginx::resource::location { 'awesome.dev-php':
-  ensure              => 'present',
-  vhost               => 'awesome.dev',
-  location            => '~ \.php$',
-  proxy               => undef,
-  try_files           => ['$uri', '$uri/', '/index.php?$args'],
-  www_root            => '/var/www/',
-  location_cfg_append => {
-    'fastcgi_split_path_info' => '^(.+\.php)(/.+)$',
-    'fastcgi_param'           => 'PATH_INFO $fastcgi_path_info',
-    'fastcgi_param '          => $path_translated,
-    'fastcgi_param  '         => $script_filename,
-    'fastcgi_pass'            => 'unix:/var/run/php5-fpm.sock',
-    'fastcgi_index'           => 'index.php',
-    'include'                 => 'fastcgi_params'
-  },
-  notify              => Class['nginx::service'],
+apache::vhost { 'awesome.dev':
+  server_name   => 'awesome.dev',
+  serveraliases => [
+],
+  docroot       => '/var/www/laravel/public',
+  port          => '80',
+  env_variables => [
+],
+  priority      => '1',
 }
 
 class { 'php':
-  package             => 'php5-fpm',
-  service             => 'php5-fpm',
+  service             => 'apache',
   service_autorestart => false,
-  config_file         => '/etc/php5/fpm/php.ini',
-  module_prefix       => ''
+  module_prefix       => '',
 }
 
-php::module {
-  [
-    'php5-mysql',
-    'php5-cli',
-    'php5-curl',
-    'php5-intl',
-    'php5-mcrypt',
-  ]:
-  service => 'php5-fpm',
-}
-
-service { 'php5-fpm':
-  ensure     => running,
-  enable     => true,
-  hasrestart => true,
-  hasstatus  => true,
-  require    => Package['php5-fpm'],
-}
+php::module { 'php5-mysql': }
+php::module { 'php5-cli': }
+php::module { 'php5-curl': }
+php::module { 'php5-intl': }
+php::module { 'php5-mcrypt': }
 
 class { 'php::devel':
   require => Class['php'],
@@ -112,23 +77,21 @@ php::pecl::module { 'xhprof':
   preferred_state => 'beta',
 }
 
-nginx::resource::vhost { 'xhprof':
-  ensure      => present,
-  server_name => ['xhprof'],
-  listen_port => 80,
-  index_files => ['index.php'],
-  www_root    => '/var/www/xhprof/xhprof_html',
-  try_files   => ['$uri', '$uri/', '/index.php?$args'],
+apache::vhost { 'xhprof':
+  server_name => 'xhprof',
+  docroot     => '/var/www/xhprof/xhprof_html',
+  port        => 80,
+  priority    => '1',
   require     => Php::Pecl::Module['xhprof']
 }
 
 
 class { 'xdebug':
-  service => 'nginx',
+  service => 'apache',
 }
 
 class { 'composer':
-  require => Package['php5-fpm', 'curl'],
+  require => Package['php5', 'curl'],
 }
 
 puphpet::ini { 'xdebug':
@@ -141,7 +104,7 @@ puphpet::ini { 'xdebug':
     'xdebug.remote_port = 9000'
   ],
   ini     => '/etc/php5/conf.d/zzz_xdebug.ini',
-  notify  => Service['php5-fpm'],
+  notify  => Service['apache'],
   require => Class['php'],
 }
 
@@ -150,7 +113,7 @@ puphpet::ini { 'php':
     'date.timezone = "America/Chicago"'
   ],
   ini     => '/etc/php5/conf.d/zzz_php.ini',
-  notify  => Service['php5-fpm'],
+  notify  => Service['apache'],
   require => Class['php'],
 }
 
@@ -160,7 +123,7 @@ puphpet::ini { 'custom':
     'error_reporting = -1'
   ],
   ini     => '/etc/php5/conf.d/zzz_custom.ini',
-  notify  => Service['php5-fpm'],
+  notify  => Service['apache'],
   require => Class['php'],
 }
 
@@ -184,33 +147,11 @@ class { 'phpmyadmin':
   require => [Class['mysql::server'], Class['mysql::config'], Class['php']],
 }
 
-nginx::resource::vhost { 'phpmyadmin':
-  ensure      => present,
-  server_name => ['phpmyadmin'],
-  listen_port => 80,
-  index_files => ['index.php'],
-  www_root    => '/usr/share/phpmyadmin',
-  try_files   => ['$uri', '$uri/', '/index.php?$args'],
+apache::vhost { 'phpmyadmin':
+  server_name => 'phpmyadmin',
+  docroot     => '/usr/share/phpmyadmin',
+  port        => 80,
+  priority    => '10',
   require     => Class['phpmyadmin'],
-}
-
-nginx::resource::location { "phpmyadmin-php":
-  ensure              => 'present',
-  vhost               => 'phpmyadmin',
-  location            => '~ \.php$',
-  proxy               => undef,
-  try_files           => ['$uri', '$uri/', '/index.php?$args'],
-  www_root            => '/usr/share/phpmyadmin',
-  location_cfg_append => {
-    'fastcgi_split_path_info' => '^(.+\.php)(/.+)$',
-    'fastcgi_param'           => 'PATH_INFO $fastcgi_path_info',
-    'fastcgi_param '          => 'PATH_TRANSLATED $document_root$fastcgi_path_info',
-    'fastcgi_param  '         => 'SCRIPT_FILENAME $document_root$fastcgi_script_name',
-    'fastcgi_pass'            => 'unix:/var/run/php5-fpm.sock',
-    'fastcgi_index'           => 'index.php',
-    'include'                 => 'fastcgi_params'
-  },
-  notify              => Class['nginx::service'],
-  require             => Nginx::Resource::Vhost['phpmyadmin'],
 }
 
