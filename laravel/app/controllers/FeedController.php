@@ -5,14 +5,19 @@ class FeedController extends \BaseController {
 	public function categoryFeed($categorySlug)
 	{
 		$category = Category::with('subCategories')->where('slug', '=', $categorySlug)->first();
-		$catArray = array();
+		$catArray[] = 0;
 
 		foreach($category->subCategories as $cat) {
 			$catArray[] = $cat->id;
 		}
 
-		$links = Link::whereIn('category_id', $catArray)->paginate(10);
-		$posts = Post::whereIn('category_id', $catArray)->get();
+		$links = Link::where('category_id', '=', $category->id)
+				->orWhereIn('subcategory_id', $catArray)
+				->get();
+
+		$posts = Post::where('category_id', '=', $category->id)
+				->orWhereIn('subcategory_id', $catArray)
+				->get();
 
 		return View::make('feeds.list')->with(array(
 			'links' => $links,
