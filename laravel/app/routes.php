@@ -20,7 +20,12 @@ Route::get('/', function()
 	return View::make('home');
 });
 
-//links
+/*
+|--------------------------------------------------------------------------
+| Links
+|--------------------------------------------------------------------------
+|
+*/
 Route::get('links', array(
 	'as'   => 'linkList', 
 	'uses' => 'LinkController@linkList'));
@@ -34,7 +39,22 @@ Route::get('links/{categorySlug}/{subcategorySlug}/{slug}', array(
 	'as'   => 'linkCanon', 
 	'uses' => 'LinkController@linkCanon'));
 
-//feeds
+Route::get('links/add', array(
+	'as'   => 'linkAdd',
+	'uses' => 'LinkController@linkAdd'
+	));
+
+Route::post('links/add', array(
+	'as'   => 'linkPost',
+	'uses' => 'LinkController@linkPost'
+	));
+
+/*
+|--------------------------------------------------------------------------
+| Feeds
+|--------------------------------------------------------------------------
+|
+*/
 Route::get('links/{categorySlug}', array(
 	'as'   => 'categoryFeed',
 	'uses' => 'FeedController@categoryFeed'));
@@ -43,7 +63,12 @@ Route::get('links/{categorySlug}/{subcategorySlug}', array(
 	'as'   => 'subcategoryFeed',
 	'uses' => 'FeedController@subcategoryFeed'));
 
-//posts
+/*
+|--------------------------------------------------------------------------
+| Posts
+|--------------------------------------------------------------------------
+|
+*/
 Route::get('posts', array(
 	'as'   => 'postList', 
 	'uses' => 'PostController@postList'));
