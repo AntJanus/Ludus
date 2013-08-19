@@ -10,7 +10,7 @@ class CategoryTableSeeder extends Seeder {
 		$categories['PHP'] = array('Basics', 'Framework', 'Advanced', 'CMS');
 		$categories['Javascript'] = array('Basics', 'Framework', 'Advanced', 'MV*');
 		$categories['HTML/CSS'] = array('Basics', 'Framework', 'Advanced', 'HTML5', 'CSS3', 'Animation');
-		
+		$categories['Other'] = array('Writing', 'Fine Art', 'Digital Art', '3D Modeling');
 		$baseCat = new Category;
 		$baseCat->name = 'Basic Category';
 		$baseCat->slug = 'basic-category';

@@ -11,7 +11,7 @@ class LinkTableSeeder extends Seeder {
 			$link = new Link;
 
 			$link->fill(array(
-				'title' => 'Sample Link Title'.$i,
+				'title' => 'Sample Link Title '.$i,
 				'description' => 'This is a sample description '.$i,
 				'url' => 'http://studfff'.$i.'.com',
 				'slug' => 'sample-link-title-'.$i,

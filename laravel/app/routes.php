@@ -46,7 +46,7 @@ Route::get('links/add', array(
 
 Route::post('links/add', array(
 	'as'   => 'linkPost',
-	'uses' => 'LinkController@linkPost'
+	'uses' => 'LinkController@linkAddPost'
 	));
 
 /*
