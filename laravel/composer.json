@@ -4,6 +4,7 @@
 	"keywords": ["framework", "laravel"],
 	"require": {
 		"laravel/framework": "4.0.*"
+		"dflydev/markdown" : "1.x"
 	},
 	"autoload": {
 		"classmap": [
