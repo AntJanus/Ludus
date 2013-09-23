@@ -1,25 +1,43 @@
 <?php
 
-class User extends Eloquent{
+use Illuminate\Auth\UserInterface;
+use Illuminate\Auth\Reminders\RemindableInterface;
 
-	protected $table = 'users';
+class User extends Eloquent implements UserInterface, RemindableInterface{
 
-	protected $hidden = array('password');
+    protected $table = 'users';
 
-	protected $fillable = array('email', 'username', 'name');
+    protected $hidden = array('password');
 
-	public function links()
-	{
-		return $this->hasMany('Link');
-	}
+    protected $fillable = array('email', 'username', 'name');
 
-	public function posts()
-	{
-		return $this->hasMany('Post');
-	}
+    public function links()
+    {
+        return $this->hasMany('Link');
+    }
 
-	public function permissions()
-	{
-		return $this->belongsToMany('Permission');
-	}
+    public function posts()
+    {
+        return $this->hasMany('Post');
+    }
+
+    public function permissions()
+    {
+        return $this->belongsToMany('Permission');
+    }
+
+    public function getAuthIdentifier()
+    {
+        return $this->getKey();
+    }
+
+    public function getAuthPassword()
+    {
+        return $this->password;
+    }
+
+    public function getReminderEmail()
+    {
+        return $this->email;
+    }
 }
