@@ -22,7 +22,7 @@ class UserController extends \BaseController {
             if(Auth::attempt($credentials))
             {
             // we are now logged in, go to admin
-                return Redirect::route('admin');
+                return Redirect::route('home');
             }
         }
 
@@ -33,7 +33,15 @@ class UserController extends \BaseController {
             ]);
 
         return View::make('user.login', $data);
+    }
 
+    public function loginscreen(){
+        return View::make('user.login');
+    }
+
+    public function logout() {
+        Auth::logout();
+        return Redirect::route('home');
     }
 
 }

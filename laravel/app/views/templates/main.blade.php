@@ -26,6 +26,13 @@
                 <li>
                     <a href="{{URL::route('postList')}}">Posts</a>
                 </li>
+                <li>
+                    @if(Auth::user())
+                    <a href="{{URL::route('logout')}}">Logout</a>
+                    @else
+                    <a href="{{URL::route('login')}}">Login</a>
+                    @endif
+                </li>
             </ul>
         </div>
     </div>
