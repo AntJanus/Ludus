@@ -26,26 +26,26 @@
 @section('content')
 
 <h3>Feed List</h3>
-<ul class="block-list feed-list">
+<div class="list-group">
     @foreach($links as $link)
-    <li>
-        <div class="feed-item">
-            <a href="{{$link->url}}"><h4>{{$link->title}}</h4></a>
+    <div class="list-group-item">
+        <a href="{{$link->url}}" class="list-group-item-heading"><h4>{{$link->title}}</h4></a>
+        <p class="list-group-item-text">
             {{$link->description}}
-            <ul class="list-meta">
-                <li>{{$link->votes}} upvotes</li>
-                <li>{{$link->clicks}} clicks</li>
-                <li><a href="/links/{{$link->slug}}">Comments</a></li>
-            </ul>
-        </div>
-    </li>
+        </p>
+        <ul class="list-inline">
+            <li>{{$link->votes}} upvotes</li>
+            <li>{{$link->clicks}} clicks</li>
+            <li><a href="/links/{{$link->id}}">Comments</a></li>
+        </ul>
+    </div>
     @endforeach
-</ul>
+</div>
 
 @stop
 
 @section('sidebar')
-<ul class="block-list">
+<ul class="list-unstyled">
     <li><h4>Title</h4>
         Description of all kinds
     </li>

@@ -1,12 +1,12 @@
 Vagrant.configure("2") do |config|
   config.hostmanager.enabled      = true
   config.hostmanager.manage_host  = true
-  config.hostmanager.aliases = %w(ludusdev.com)
+  config.hostmanager.aliases = %w(ludus.dev)
 
   config.vm.box = "precise64"
   config.vm.box_url = "http://files.vagrantup.com/precise64.box"
-
-  config.vm.network :private_network, ip: "192.168.56.101"
+  config.vm.hostname = 'ludusdev'
+  config.vm.network :private_network, ip: "12.12.12.12"
     config.ssh.forward_agent = true
 
   config.vm.provider :virtualbox do |v|

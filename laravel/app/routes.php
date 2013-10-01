@@ -17,7 +17,8 @@ View::composer('templates.main', 'basicComposer');
 
 Route::get('/', array( 'as' => 'home', 'do' => function()
 {
-    return View::make('home');
+    $links = Link::get();
+    return View::make('home')->with(array('links'=>$links));
 }));
 
 Route::get('login', array('as' => 'login', 'uses' => 'UserController@loginscreen'));

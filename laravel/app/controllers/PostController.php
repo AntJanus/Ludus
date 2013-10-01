@@ -2,28 +2,28 @@
 
 class PostController extends \BaseController {
 
-	public function postList()
-	{
-		$posts = post::all();
+    public function postList()
+    {
+        $posts = post::all();
 
-		return View::make('posts.list')->with(array('posts' => $posts));
-	}
+        return View::make('posts.list')->with(array('posts' => $posts));
+    }
 
-	public function postById($id)
-	{
-		$posts = post::find($id);
-		return View::make('posts.single')->with(array('post' => $post));
-	}
+    public function postById($id)
+    {
+        $post = post::find($id);
+        return View::make('posts.single')->with(array('post' => $post));
+    }
 
-	public function postCanon($category, $subcategory, $slug)
-	{
-		$posts = post::where('slug', '=', $slug)->get();
+    public function postCanon($category, $subcategory, $slug)
+    {
+        $post = post::where('slug', '=', $slug)->first();
 
-		return View::make('posts.single')->with(array(
-				'category' => $category, 
-				'subcategory' => $subcategory,
-				'post' => $post));
-	}
+        return View::make('posts.single')->with(array(
+                'category' => $category,
+                'subcategory' => $subcategory,
+                'post' => $post));
+    }
 
 
 }
