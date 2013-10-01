@@ -7,6 +7,7 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
     <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
     @yield('javascript')
 </head>
@@ -46,23 +47,30 @@
             </div>
         </div>
     </nav>
-    <div class="navbar-inverse navbar-default">
-        <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-secondary">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+    <div id="ludus-header">
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Best Site Ever</h1>
             </div>
-            <div class="collapse navbar-collapse navbar-secondary">
-                <ul class="nav navbar-nav">
-                    @foreach($mainCategories as $cat)
-                    <li>
-                        <a href="/links/{{$cat->slug}}">{{$cat->name}}</a>
-                    </li>
-                    @endforeach
-                </ul>
+        </div>
+        <div class="navbar-inverse navbar-default">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-secondary">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse navbar-secondary">
+                    <ul class="nav navbar-nav">
+                        @foreach($mainCategories as $cat)
+                        <li>
+                            <a href="/links/{{$cat->slug}}">{{$cat->name}}</a>
+                        </li>
+                        @endforeach
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
