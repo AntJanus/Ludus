@@ -39,8 +39,8 @@ apache::dotconf { 'custom':
 
 apache::module { 'rewrite': }
 
-apache::vhost { 'ludusdev.com':
-  server_name   => 'ludusdev.com',
+apache::vhost { 'ludus.dev':
+  server_name   => 'ludus.dev',
   serveraliases => [
 ],
   docroot       => '/var/www/laravel/public',
