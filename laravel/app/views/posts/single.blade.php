@@ -18,15 +18,3 @@
 </div>
 
 @stop
-
-@section('sidebar')
-<ul class="list-unstyled">
-    <li><h4>Title</h4>
-        Description of all kinds
-    </li>
-    <li>
-        <h4>Title</h4>
-        Description of all kinds
-    </li>
-</ul>
-@stop

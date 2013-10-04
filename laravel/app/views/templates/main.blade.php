@@ -82,10 +82,15 @@
                 @yield('content')
             </div>
             <div class="col-md-3">
-                @yield('sidebar')
+                @section('sidebar')
+                <a href="/links/add" class="btn btn-primary">Add Link +</a> <a href="/posts/add" class="btn btn-success">Add Post +</a>
+                @show
             </div>
         </div>
     </div>
     @yield('javascript-bottom')
 </body>
 </html>
+
+
+

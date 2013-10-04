@@ -43,7 +43,7 @@ Route::get('links/{id}', array(
     'uses' => 'LinkController@linkById'))
 ->where('id', '[0-9]+');
 
-Route::get('links/{categorySlug}/{subcategorySlug}/{slug}', array(
+Route::get('links/{category}/{subCategory}/{slug}', array(
     'as'   => 'linkCanon',
     'uses' => 'LinkController@linkCanon'));
 
