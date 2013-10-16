@@ -17,6 +17,12 @@ class LinkController extends \BaseController {
 
     public function linkCanon($category, $subcategory, $slug)
     {
+        /*
+         * TODO
+         *
+         * [ ] model config for Link, category + subcategory should come with link
+         * [ ] send to 404 when necessary
+         */
         $link = Link::where('slug', '=', $slug)->first();
         $cat = Category::where('id', '=', $link->category_id)->first();
         $subcat = Category::where('id', '=', $link->subcategory_id)->first();
@@ -52,10 +58,8 @@ class LinkController extends \BaseController {
         /*
          * TODO
          *
-         *  * [x]implement slugify
-         *  * [x]check for duplicates
-         *  * [x]if name matches but not URL, augment name with a number (1/2/3 whatever)
-         *  * []return to URL page
+         * [ ] name validation/sanitization
+         * [ ] create URL builder class/function
          */
         $input  = Input::all();
 
@@ -83,7 +87,6 @@ class LinkController extends \BaseController {
             $link->save();
 
             $url = 'links/'.$cat->slug.'/'.$subcat->slug.'/'.$link->slug;
-            echo $url; exit;
             return Redirect::to($url);
         }
         else{
