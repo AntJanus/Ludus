@@ -1,0 +1,16 @@
+{
+  "name": "Ludus Bootstrap Theme",
+  "dependencies": {
+    "bootstrap": "~3.x"
+  },
+  "homepage": "https://github.com/AntJanus/ludus-bootstrap-theme",
+  "_release": "v1.0",
+  "_resolution": {
+    "type": "tag",
+    "tag": "v1.0",
+    "commit": "1b3db2351d270b68b3a9ff847ae6eb77e99609b1"
+  },
+  "_source": "https://github.com/AntJanus/ludus-bootstrap-theme.git",
+  "_target": "v1.0",
+  "_originalSource": "https://github.com/AntJanus/ludus-bootstrap-theme.git"
+}

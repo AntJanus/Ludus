@@ -1,0 +1,36 @@
+---
+layout: template
+title: Add Link
+base_url: "../../"
+---
+
+<div class="container" id="ludus-content">
+    <div class="row">
+        <div class="col-md-9">
+            <p>Please add a link at your convenience. Make it a good one too!</p>
+            <form method="POST" action="http://localhost/links/add" accept-charset="UTF-8" class="form-horizontal"><input name="_token" type="hidden" value="wGRo0qfMeCNFi2mmhlPWgh45DaalD23hjdieElOK"><div class="form-group">
+                <label for="title" class="col-md-2 control-label">Title</label>    <div class="col-md-8">
+                <input class="form-control" name="title" type="text" value="" id="title">    </div>
+            </div>
+            <div class="form-group">
+                <label for="url" class="col-md-2 control-label">URL</label>    <div class="col-md-8">
+                <input class="form-control" name="url" type="text" value="" id="url">    </div>
+            </div>
+            <div class="form-group">
+                <label for="category" class="col-md-2 control-label">Category</label>    <div class="col-md-8">
+                <select class="form-control" id="category" name="category"><optgroup label="Basic Category"><option value="2">Basic SubCategory</option></optgroup><optgroup label="Photography"><option value="4">Basics</option><option value="5">Film</option><option value="6">Advanced</option></optgroup><optgroup label="PHP"><option value="8">Basics</option><option value="9">Framework</option><option value="10">Advanced</option><option value="11">CMS</option></optgroup><optgroup label="Javascript"><option value="13">Basics</option><option value="14">Framework</option><option value="15">Advanced</option><option value="16">MV*</option></optgroup><optgroup label="HTML/CSS"><option value="18">Basics</option><option value="19">Framework</option><option value="20">Advanced</option><option value="21">HTML5</option><option value="22">CSS3</option><option value="23">Animation</option></optgroup></select>    </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    &nbsp;
+                </div>
+                <div class="col-md-8">
+                    <input class="btn btn-primary" type="submit" value="Submit">    </div>
+                </div>
+            </form>            </div>
+            <div class="col-md-3">
+                <a href="/links/add" class="btn btn-primary">Add Link +</a> <a href="/posts/add" class="btn btn-success">Add Post +</a>
+            </div>
+        </div>
+    </div>
+</body></html>
