@@ -8,14 +8,15 @@ class UserTableSeeder extends Seeder {
         $user = new User;
 
         $user->fill(array(
-        	'email'	   => 'antonin@antjanus.com',
-        	'username' => 'antjanus',
-        	'name'	   => 'Antonin Januska'
-        	));
+            'email'    => 'antonin@antjanus.com',
+            'username' => 'antjanus',
+            'name'     => 'Antonin Januska',
+            'role'     => 2
+            ));
 
-       	$user->password = Hash::make('admin');
+        $user->password = Hash::make('admin');
 
-       	$user->save();
+        $user->save();
     }
 
 }
