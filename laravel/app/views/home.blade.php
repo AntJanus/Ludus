@@ -8,9 +8,10 @@
     </div>
 </div>
 <h3>Feed List</h3>
-<div class="list-group">
+<div class="list-group list-links">
     @foreach($links as $link)
     <div class="list-group-item">
+        <a href="#" class="pull-right"><img src="#" width="75px" height="75px" class="img-thumbnail"></a>
         <a href="{{$link->url}}" class="list-group-item-heading"><h4>{{$link->title}}</h4></a>
         <p class="list-group-item-text">
             {{$link->description}}
