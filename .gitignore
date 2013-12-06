@@ -1,2 +1,6 @@
 .vagrant
 laravel/app/storage/*
+*/bower_components/*
+bower_components/
+**/**/bower_components/**
+bower_components/*/*
