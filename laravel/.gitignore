@@ -1,0 +1,9 @@
+/bootstrap/compiled.php
+/app/storage
+/vendor
+composer.phar
+composer.lock
+.DS_Store
+.vagrant
+laravel/app/storage/*
+bower_components/*

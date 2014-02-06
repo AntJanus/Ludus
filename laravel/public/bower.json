@@ -1,0 +1,8 @@
+{
+  "name": "Ludus",
+  "version": "0.0.1",
+  "dependencies": {
+    "bootstrap": "~3.x",
+    "ludus-bootstrap-theme": "https://github.com/AntJanus/ludus-bootstrap-theme.git#v1.0"
+  }
+}

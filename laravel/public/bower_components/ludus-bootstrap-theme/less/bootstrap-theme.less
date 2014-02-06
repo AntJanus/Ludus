@@ -1,0 +1,239 @@
+/**
+ * Ludus Bootstrap Theme
+ *
+ * Bootstrap theme for the Ludus Application.
+ *
+ */
+
+ @import "vars.less";
+
+ #ludus-header{
+    color: @mc-dark;
+
+    h1, h2, h3, h4, h5, h6 {
+        margin-top: 0;
+    }
+}
+
+body {
+    background: #efefef;
+    color: @black;
+}
+
+a {
+    color: @main-color;
+}
+
+a:hover {
+    color: @mc-dark;
+}
+
+// recolor default navbar
+.navbar-brand {
+    img {
+        max-height: 35px;
+        padding-right: 10px;
+    }
+
+    padding: 0;
+    line-height: 50px;
+}
+
+.navbar > .container .navbar-brand {
+    margin-left: 0;
+}
+
+.navbar-top {
+    background-color: @main-color;
+    border-color: @mc-grey;
+    border-radius: 0;
+    margin-bottom: 0;
+
+    .navbar-brand {
+        color: @white;
+    }
+
+    .nav>li a {
+        color: @white;
+    }
+
+    .navbar-toggle {
+
+        &:focus{
+            border-color: transparent;
+        }
+
+        &:hover{
+            background-color: @mc-grey;
+        }
+    }
+
+    form input[type=text] {
+        background: @mc-dark;
+        border: 1px solid @mc-grey;
+        color: #fff;
+    }
+}
+
+.navbar-bottom {
+    .container {
+        padding-left: 0;
+    }
+
+    .navbar-secondary {
+        padding-left: 0;
+    }
+}
+
+//override buttons
+
+.btn-primary {
+    background-color: @main-color;
+    border-color: @mc-dark;
+
+    &:hover {
+        background-color: @mc-light;
+        border-color: @mc-dark;
+    }
+}
+
+.btn-secondary {
+    background-color: @secondary-color;
+    border-color: @sc-grey;
+    color: #fff;
+
+    &:hover {
+        background-color: @sc-dark;
+        border-color: @sc-grey;
+        color: #fff;
+    }
+}
+
+//elements
+
+.list-group-item:first-child, .list-group-item:last-child {
+    border-radius: 0;
+}
+
+.ludus-list-white {
+    background-color: #fff;
+    color: @black;
+
+    border-top: 1px solid @mc-dark;
+    border-bottom: 1px solid @mc-dark;
+    border-radius: 0;
+
+    ul li:first-child{
+        margin-left: -5px;
+    }
+
+    h4 {
+        margin-top: 0;
+    }
+}
+
+
+//sidebar and content
+#ludus-content {
+    margin-top: 1.5em;
+}
+
+.ludus-share {
+    margin-bottom: 1.5em;
+}
+
+
+.ludus-widget {
+    background: @mc-light;
+    color: @mc-white;
+    border-bottom: 1px solid @mc-grey;
+    padding: .5em 1em;
+
+    h3{
+        margin-top: 0;
+    }
+
+    a {
+        color: @white;
+    }
+}
+
+.ludus-title {
+    border: 0;
+
+    h1, h2, h3, h4{
+        margin-top: 0;
+    }
+}
+
+//links
+.list-links {
+    color: @black;
+
+    .list-group-item {
+        .ludus-list-white;
+    }
+
+    .ludus-link-featured {
+    }
+}
+
+.ludus-link {
+    color: @black;
+}
+
+//comments
+
+
+.ludus-comments {
+
+}
+
+.ludus-comments-item {
+    .ludus-list-white;
+}
+
+//color preview
+.color-prev{
+    height: 25px;
+}
+
+.main-color {
+    background: @main-color;
+}
+
+.mc-grey {
+    background: @mc-grey;
+}
+
+.mc-dark {
+    background: @mc-dark;
+}
+
+.mc-light {
+    background: @mc-light;
+}
+
+.mc-white {
+    background: @mc-white;
+}
+
+.secondary-color {
+    background: @secondary-color;
+}
+
+.sc-grey {
+    background: @sc-grey;
+}
+
+.sc-dark {
+    background: @sc-dark;
+}
+
+.sc-light {
+    background: @sc-light;
+}
+
+.sc-white {
+    background: @sc-white;
+}
