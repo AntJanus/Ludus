@@ -3,6 +3,8 @@
   "version": "0.0.1",
   "dependencies": {
     "bootstrap": "~3.x",
-    "ludus-bootstrap-theme": "https://github.com/AntJanus/ludus-bootstrap-theme.git#v1.0"
+    "ludus-bootstrap-theme": "https://github.com/AntJanus/ludus-bootstrap-theme.git#v1.0",
+    "bootstrap-markdown": "~2.1.x",
+    "markdown":"~0.4.0"
   }
 }

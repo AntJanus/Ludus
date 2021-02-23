@@ -34,6 +34,7 @@ Route::get('logout', array('as' => 'logout', 'uses' => 'UserController@logout'))
 |--------------------------------------------------------------------------
 |
 */
+
 Route::get('links', array(
     'as'   => 'linkList',
     'uses' => 'LinkController@linkList'));
@@ -63,6 +64,7 @@ Route::post('links/add', array(
 |--------------------------------------------------------------------------
 |
 */
+
 Route::get('links/{categorySlug}', array(
     'as'   => 'categoryFeed',
     'uses' => 'FeedController@categoryFeed'));
@@ -77,6 +79,7 @@ Route::get('links/{categorySlug}/{subcategorySlug}', array(
 |--------------------------------------------------------------------------
 |
 */
+
 Route::get('posts', array(
     'as'   => 'postList',
     'uses' => 'PostController@postList'));
@@ -89,3 +92,7 @@ Route::get('posts/{id}', array(
 Route::get('posts/{categorySlug}/{subcategorySlug}/{slug}', array(
     'as'   => 'postCanon',
     'uses' => 'PostController@postCanon'));
+
+Route::get('posts/add', array(
+    'as'   => 'postAdd',
+    'uses' => 'PostController@postAdd'));
